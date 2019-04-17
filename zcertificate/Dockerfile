@@ -9,5 +9,7 @@ RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh && 
 # This results in a single layer image
 FROM alpine:latest
 COPY --from=build /go/src/github.com/zmap/zcertificate/cmd/zcertificate/zcertificate /bin/zcertificate
-ENTRYPOINT ["/bin/zcertificate"]
-CMD ["--help"]
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+# For the entrypoint and to prettify the output
+RUN apk add jq && chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
