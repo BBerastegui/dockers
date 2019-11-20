@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(cat ~/.docker/config.json | jq -r '.auths') = "{}" ]
+if [ $(cat ~/.docker/config.json | jq -rc '.auths') = "{}" ]
 then
     echo "[i] Login to a docker repo first.";
     exit 1;
