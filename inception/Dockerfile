@@ -1,5 +1,5 @@
 FROM golang:alpine
 
-RUN apk add git && go get github.com/proabiral/inception
+RUN ulimit -n 4096 && apk add git && go get github.com/proabiral/inception
 
 ENTRYPOINT ["inception"]
