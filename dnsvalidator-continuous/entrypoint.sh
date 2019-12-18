@@ -1,6 +1,7 @@
 #!/bin/bash
 
 /usr/local/bin/dnsvalidator -o /resolvers.txt \
+    -r example.com \
     -tL https://public-dns.info/nameservers.txt \
     -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt
 
