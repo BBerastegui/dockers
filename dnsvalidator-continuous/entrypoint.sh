@@ -11,10 +11,13 @@ cd /
 git config --global user.name "autoupdater"
 git config --global user.email "autoupdater@localhost"
 git clone https://${GITHUB_TOKEN}@github.com/BBerastegui/fresh-dns-servers.git
+# Remove blank line: https://github.com/BBerastegui/fresh-dns-servers/issues/2
+sed -i '/^$/d' /resolvers.txt
+# Move resolvers.txt to the repo
 mv /resolvers.txt /fresh-dns-servers/resolvers.txt
 cd /fresh-dns-servers/
 
-# Create a csv format one
+# Create a csv version
 cat resolvers.txt | tr '\n' ',' | sed 's/,$//' >> /fresh-dns-servers/resolvers.csv
 
 git add resolvers.*
