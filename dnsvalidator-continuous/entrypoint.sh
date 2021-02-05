@@ -1,6 +1,11 @@
 #!/bin/bash
 
+wget https://public-dns.info/nameservers.txt
+wget https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt
+cat nameservers.txt resolvers.txt | sort -u >> ns_input.txt
+
 /usr/local/bin/dnsvalidator -o /resolvers.txt \
+    -threads 30
     -r example.com \
     -tL https://public-dns.info/nameservers.txt \
     -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt
