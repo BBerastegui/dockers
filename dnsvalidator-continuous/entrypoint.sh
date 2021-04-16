@@ -5,7 +5,7 @@ wget https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolve
 cat nameservers.txt resolvers.txt | sort -u >> ns_input.txt
 
 /usr/local/bin/dnsvalidator -o /resolvers.txt \
-    -threads 30
+    -threads 60
     -r example.com \
     -tL https://public-dns.info/nameservers.txt \
     -tL https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt
