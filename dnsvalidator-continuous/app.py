@@ -5,7 +5,7 @@ from threading import Thread
 
 app = Flask(__name__)
 
-@app.route('/refresh-dns')
+@app.route('/refresh-dns', methods=['GET','POST'])
 def hello_world():
     thread = Thread(target=threaded_task)
     thread.daemon = True
